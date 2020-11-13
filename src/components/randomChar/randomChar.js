@@ -1,40 +1,45 @@
 /* eslint-disable react/prop-types */
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import gotService from '../../services/gotService';
 import ErrorMessage from '../errorMessage';
 import Spinner from '../spinner';
 import './randomChar.css';
 
 export default class RandomChar extends Component {
-    constructor(){
+    gotService = new gotService();
+    state = {
+        char: {},
+        loading: true,
+        error: false,
+    };
+
+    constructor() {
         super();
         this.updateChar = this.updateChar.bind(this);
     }
 
-    componentDidMount(){
+    componentDidMount() {
         this.updateChar();
         this.timerId = setInterval(this.updateChar, 4000);
     }
 
-    componentWillUnmount(){
+    componentWillUnmount() {
         clearInterval(this.timerId);
     }
 
-    gotService = new gotService();
-    
-    state = {
-        char: {},
-        loading:true,
-        error:false
-    }
-
-    onCharLoaded = (char) => this.setState({char, loading:false});
+    onCharLoaded = (char) => this.setState({
+        char,
+        loading: false,
+    });
     onError = () => {
-        this.setState({error:true, loading:false});
+        this.setState({
+            error: true,
+            loading: false,
+        });
     };
 
-    updateChar  (){
-        const id = Math.floor(Math.random()*140+25);
+    updateChar() {
+        const id = Math.floor(Math.random() * 140 + 25);
         //const id = 130000;
         this.gotService.getCharacter(id)
             .then(this.onCharLoaded)
@@ -43,12 +48,11 @@ export default class RandomChar extends Component {
     }
 
     render() {
-        const {char, loading, error} = this.state;
+        const { char, loading, error } = this.state;
 
-        const errorMessage = error ? <ErrorMessage/> : null;
-        const spinner = loading ? <Spinner/> : null;
-        const content = !(loading || error) ? <View char={char}/> : null;
-
+        const errorMessage = error ? <ErrorMessage /> : null;
+        const spinner = loading ? <Spinner /> : null;
+        const content = !(loading || error) ? <View char={char} /> : null;
 
         return (
             <div className="random-block rounded">
@@ -60,9 +64,9 @@ export default class RandomChar extends Component {
     }
 }
 
-const View = ({char})=>{
-    const {name, gender, born, died, culture} = char;
-    return(
+const View = ({ char }) => {
+    const { name, gender, born, died, culture } = char;
+    return (
         <>
             <h4>Random Character: {name}</h4>
             <ul className="list-group list-group-flush">

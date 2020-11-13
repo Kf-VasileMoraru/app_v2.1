@@ -1,48 +1,45 @@
 /* eslint-disable react/prop-types */
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import './itemList.css';
-//import gotService from '../../services/gotService';
+// import gotService from '../../services/gotService';
 import Spinner from '../spinner';
 
-
-
 export default class ItemList extends Component {
-    //gotService = new gotService();
+    // gotService = new gotService();
 
-    state = {
-        charList:[]
-    }
+    state = { charList: [] };
 
-    componentDidMount(){
-        const {getData} = this.props;
+    componentDidMount() {
+        const { getData } = this.props;
 
-        //this.gotService.getAllCharacters()
-        getData().then((charList)=>{
-                this.setState({charList});
+        // this.gotService.getAllCharacters()
+        getData()
+            .then((charList) => {
+                this.setState({ charList });
             });
     }
 
-    renderItems(arr){
-        //return arr.map((item, i) => {
-        return arr.map((item) => {
-            const {id} = item;
+    renderItems(arr) {
+        // return arr.map((item, i) => {
+        return arr.map((item, i) => {
+            // const { id } = item;
             const label = this.props.renderItem(item);
             return (
                 <li
-                    key={id}
+                    key={i}
                     className="list-group-item"
-                    onClick = {() => this.props.onCharSelected(id)}>
-                    {label}  
+                    onClick={() => this.props.onCharSelected(i + 41)}>
+                    {label}
                 </li>
             );
         });
     }
 
     render() {
-        const{charList} = this.state;
+        const { charList } = this.state;
 
-        if(!charList){
-            return<Spinner/>;
+        if (!charList) {
+            return <Spinner />;
         }
         const items = this.renderItems(charList);
 

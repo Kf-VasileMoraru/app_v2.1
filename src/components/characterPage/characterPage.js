@@ -1,7 +1,6 @@
 import React from 'react';
 import { Col, Row } from 'reactstrap';
 import GotService from '../../services/gotService';
-
 import ItemList from '../itemList';
 import CharDetails from '../charDetails';
 

@@ -7,7 +7,7 @@ import CharacterPage from '../characterPage';
 // import gotService from "../../services/gotService"
 
 export default class App extends React.Component {
-    // gotService = new gotService()
+// gotService = new gotService()
 
     constructor(props) {
         super(props);
