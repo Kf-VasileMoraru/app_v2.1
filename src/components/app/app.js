@@ -29,7 +29,7 @@ export default class App extends React.Component {
                     <Row>
                         <Col
                             lg={{
-                                size: 5,
+                                size: 6,
                                 offset: 0,
                             }}
                         >

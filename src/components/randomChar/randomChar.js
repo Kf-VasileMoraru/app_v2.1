@@ -1,12 +1,13 @@
 /* eslint-disable react/prop-types */
 import React, { Component } from 'react';
-import gotService from '../../services/gotService';
+import GotService from '../../services/gotService';
 import ErrorMessage from '../errorMessage';
 import Spinner from '../spinner';
 import './randomChar.css';
 
 export default class RandomChar extends Component {
-    gotService = new gotService();
+    gotService = new GotService();
+
     state = {
         char: {},
         loading: true,
@@ -31,6 +32,7 @@ export default class RandomChar extends Component {
         char,
         loading: false,
     });
+
     onError = () => {
         this.setState({
             error: true,
@@ -40,11 +42,10 @@ export default class RandomChar extends Component {
 
     updateChar() {
         const id = Math.floor(Math.random() * 140 + 25);
-        //const id = 130000;
+        // const id = 130000;
         this.gotService.getCharacter(id)
             .then(this.onCharLoaded)
             .catch(this.onError);
-
     }
 
     render() {

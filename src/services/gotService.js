@@ -10,7 +10,7 @@ export default class GotService {
             throw new Error(`Could not fetch ${url},
             received ${res.status}`);
         }
-        return await res.json();
+        return res.json();
     };
 
     getAllCharacters = async () => {
@@ -23,29 +23,29 @@ export default class GotService {
         return this.transformCharacter(res);
     };
 
-    getAllHouse = async () => {
-        return this.getResource('/hauses/');
-    };
+    // getAllHouse = async () => {
+    //     return this.getResource('/hauses/');
+    // };
+    //
+    // getHouse = async (id) => {
+    //     return this.getResource(`/hauses/${id}`);
+    // };
+    //
+    // getAllBooks = async () => {
+    //     return this.getResource('/books/');
+    // };
+    //
+    // getBook = async (id) => {
+    //     return this.getResource(`/books/${id}`);
+    //  };
 
-    getHouse = async (id) => {
-        return this.getResource(`/hauses/${id}`);
-    };
-
-    getAllBooks = async () => {
-        return this.getResource('/books/');
-    };
-
-    getBook = async (id) => {
-        return this.getResource(`/books/${id}`);
-    };
-
-    transformCharacter = (char) => {
-        return {
+    transformCharacter = (char) => (
+        {
             name: char.name,
             gender: char.gender,
             born: char.born,
             died: char.died,
             culture: char.culture,
-        };
-    };
+        }
+    );
 }
