@@ -1,9 +1,9 @@
 import React from 'react';
 import { Button, Col, Container, Row } from 'reactstrap';
-
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Header from '../header';
 import RandomChar from '../randomChar';
-import CharacterPage from '../characterPage';
+import CharacterPage, { CharacterItem, CharacterPageNew } from '../characterPage';
 // import gotService from "../../services/gotService"
 
 export default class App extends React.Component {
@@ -21,45 +21,36 @@ export default class App extends React.Component {
     render() {
         const char = this.state.showRandomChar ? <RandomChar /> : null;
         return (
-            <>
-                <Container>
-                    <Header />
-                </Container>
-                <Container>
-                    <Row>
-                        <Col
-                            lg={{
-                                size: 6,
-                                offset: 0,
-                            }}
-                        >
-                            {char}
-                            <Button onClick={this.toggleRandomChar}>Vasea</Button>
-                        </Col>
-                    </Row>
-                    <CharacterPage />
-                    {/* <Row>
-                        <Col md="6">
-                            <ItemList
-                                onCharSelected = {this.onCharSelected}
-                                getData = {this.gotService.getAllCharacters} />
-                        </Col>
-                        <Col md="6">
-                            <CharDetails charId={this.state.selectedChar} />
-                        </Col>
-                     </Row>
-                    <Row>
-                        <Col md="6">
-                            <ItemList
-                                onCharSelected = {this.onCharSelected}
-                                getData = {this.gotService.getAllCharacters} />
-                        </Col>
-                        <Col md="6">
-                            <CharDetails charId={this.state.selectedChar} />
-                        </Col>
-                    </Row> */}
-                </Container>
-            </>
+            <Router>
+                <div className='app'>
+                    <Container>
+                        <Header />
+                    </Container>
+                    <Container>
+                        <Row>
+                            <Col
+                                lg={{
+                                    size: 6,
+                                    offset: 0,
+                                }}>
+                                {char}
+                                <Button onClick={this.toggleRandomChar}>Vasea</Button>
+                            </Col>
+                        </Row>
+                        <Route path='/characters/' component={CharacterPage} />
+                        <Route path='/petru/' exact component={CharacterPageNew} />
+                        <Route path='/vasea/' exact component={CharacterPage} />
+                        <Route path='/vasea/:id' render={({ match }) => {
+                            // console.log(id);
+                            const { id } = match.params;
+                            return (
+                                <CharacterItem vasea={id} />);
+                        }} />
+                        {/* <CharacterPage /> */}
+
+                    </Container>
+                </div>
+            </Router>
         );
     }
 }

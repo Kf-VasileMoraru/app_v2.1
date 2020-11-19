@@ -2,7 +2,7 @@ import React from 'react';
 import ItemList from '../itemList';
 import CharDetails, { Field } from '../charDetails';
 import GotService from '../../services/gotService';
-import RowBlock from '../app/rowBlock';
+import RowBlock from '../rowBlock';
 
 export default class CharacterPage extends React.Component {
     gotService = new GotService();
@@ -31,8 +31,6 @@ export default class CharacterPage extends React.Component {
 
         );
 
-        return (
-            <RowBlock left={itemList} right={charDetails} />
-        );
+        return (<RowBlock left={itemList} right={charDetails} />);
     }
 }
