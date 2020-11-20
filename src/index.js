@@ -13,3 +13,4 @@ ReactDOM.render(<App />, document.getElementById('root'));
 // }
 
 // https://www.npmjs.com/package/eol-converter-cli
+// render functions, jsx elements like component options
