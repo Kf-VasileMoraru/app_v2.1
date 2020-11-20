@@ -7,7 +7,7 @@ class CharacterPageNew extends React.Component {
     gotService = new GotService();
 
     onCharSelected = (id) => {
-        this.props.history.push(`/vasea/${id}`);
+        this.props.history.push(`vasea/${id}`);
     };
 
     render() {

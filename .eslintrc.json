@@ -42,5 +42,6 @@
         "object-curly-newline": ["error", { "multiline": true }],
         "no-unused-vars": "off",
         "react/prop-types": 0
+
     }
 }

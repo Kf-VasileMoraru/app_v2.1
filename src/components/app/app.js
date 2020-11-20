@@ -37,9 +37,9 @@ export default class App extends React.Component {
                                 <Button onClick={this.toggleRandomChar}>Vasea</Button>
                             </Col>
                         </Row>
-                        <Route path='/characters/' component={CharacterPage} />
-                        <Route path='/petru/' exact component={CharacterPageNew} />
-                        <Route path='/vasea/' exact component={CharacterPage} />
+                        <Route path='/characters' component={CharacterPage} />
+                        <Route path='/petru' exact component={CharacterPageNew} />
+                        <Route path='/vasea' exact component={CharacterPage} />
                         <Route path='/vasea/:id' render={({ match }) => {
                             // console.log(id);
                             const { id } = match.params;
@@ -47,7 +47,6 @@ export default class App extends React.Component {
                                 <CharacterItem vasea={id} />);
                         }} />
                         {/* <CharacterPage /> */}
-
                     </Container>
                 </div>
             </Router>

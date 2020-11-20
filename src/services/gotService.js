@@ -23,6 +23,11 @@ export default class GotService {
         return this.transformCharacter(res);
     };
 
+    async getAllCharacters2() {
+        const res = await this.getResource('/characters?page=5');
+        return res.map(this.transformCharacter);
+    }
+
     // getAllHouse = async () => {
     //     return this.getResource('/hauses/');
     // };

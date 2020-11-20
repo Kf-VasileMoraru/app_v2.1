@@ -36,14 +36,14 @@ const Header = () => (
         </HeaderTitle>
         <HeaderLinks>
             <li>
-                <Link to='/characters/'>Characters</Link>
+                <Link to='/characters'>Characters</Link>
                 {/* <a href="#">Characters</a> */}
             </li>
             <li>
-                <Link to='/vasea/'>Houses</Link>
+                <Link to='/vasea'>Houses</Link>
             </li>
             <li>
-                <a href="/vasea/">Books </a>
+                <a href="/vasea">Books </a>
             </li>
         </HeaderLinks>
     </HeaderBlock>
